@@ -4,7 +4,7 @@ import { statusCode } from "../../lib/httpstatuscode";
 
 class UserControler {
     static async register(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
-        const { body, user } = req;
+        const { body } = req;
     }
 }
 
