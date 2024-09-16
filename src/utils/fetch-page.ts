@@ -9,7 +9,7 @@ export async function fetchPage(
     select,
   }: IPaginationPayload,
 ): Promise<IPaginationResponse> {
-  const { count: perPage, page: currentPage } = pagination; // pagination is guaranteed now
+  const { count: perPage, page: currentPage } = pagination;
   const skip = (currentPage - 1) * perPage;
 
   let query = model
