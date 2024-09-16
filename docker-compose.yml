@@ -1,0 +1,15 @@
+version: "3.6"
+services:
+  api:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/productdb
+      - JWT_SECRET=your_secret_key
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
