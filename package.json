@@ -4,6 +4,8 @@
   "description": "MainStack Backend Engineer test",
   "main": "index.js",
   "scripts": {
+    "pretty": "prettier --write \"src/**/*.ts\"",
+    "build": "npm run pretty && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -26,6 +28,7 @@
     "@types/mongoose": "^5.11.97",
     "@types/supertest": "^6.0.2",
     "jest": "^29.7.0",
+    "prettier": "^3.3.2",
     "supertest": "^7.0.0",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",

@@ -2,7 +2,7 @@ export async function fetchPage(
   model: any,
   {
     filter = {},
-    pagination = { count: 10, page: 1 }, 
+    pagination = { count: 10, page: 1 },
     populates = [],
     order = { updatedAt: -1 },
     trx = null,
@@ -50,7 +50,6 @@ export async function fetchPage(
   };
 }
 
-
 interface IPagination {
   count: number;
   page: number;
@@ -66,7 +65,7 @@ export interface IMeta {
 export interface IPaginationPayload {
   filter?: any;
   pagination?: IPagination;
-  populates?: { path: string; select: string; populate?: any, match?: any }[];
+  populates?: { path: string; select: string; populate?: any; match?: any }[];
   order?: any;
   trx?: any;
   select?: string;

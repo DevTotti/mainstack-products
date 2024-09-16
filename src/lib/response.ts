@@ -1,7 +1,12 @@
 import { Response } from "express";
 
 class ExpressResponse {
-  static success(res: Response, code: number, message: string, data: any = null): any {
+  static success(
+    res: Response,
+    code: number,
+    message: string,
+    data: any = null,
+  ): any {
     return res.status(code).json({
       success: true,
       message,
@@ -9,7 +14,12 @@ class ExpressResponse {
     });
   }
 
-  static error(res: Response, code: number, message: string, data: any = null): any {
+  static error(
+    res: Response,
+    code: number,
+    message: string,
+    data: any = null,
+  ): any {
     return res.status(code).json({
       success: false,
       message,

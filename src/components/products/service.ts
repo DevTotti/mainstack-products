@@ -35,7 +35,7 @@ class ProductService {
     return await Product.findOne(filter);
   }
 
-  async deleteOne(id: string){
+  async deleteOne(id: string) {
     return await Product.findByIdAndDelete(id);
   }
 }

@@ -10,7 +10,7 @@ router.post(
   "/",
   authenticate,
   validateBody(schema.productSchema),
-  ProductControler.create
+  ProductControler.create,
 );
 router.get("/", authenticate, ProductControler.get);
 router.get("/public", ProductControler.getPublic);
@@ -19,7 +19,7 @@ router.put(
   "/:id",
   validateBody(schema.productSchema),
   authenticate,
-  ProductControler.updateOne
+  ProductControler.updateOne,
 );
 router.delete("/:id", authenticate, ProductControler.deleteOne);
 export default router;

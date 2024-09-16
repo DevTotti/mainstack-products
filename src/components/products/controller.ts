@@ -9,7 +9,7 @@ class ProductControler {
   static async create(
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
   ): Promise<Response | void> {
     try {
       const { body, user } = req;
@@ -20,7 +20,7 @@ class ProductControler {
         res,
         statusCode.CREATED,
         "Product created successfully",
-        product
+        product,
       );
     } catch (error) {
       return next(error);
@@ -30,7 +30,7 @@ class ProductControler {
   static async get(
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
   ): Promise<Response | void> {
     try {
       const { user, query } = req;
@@ -44,7 +44,7 @@ class ProductControler {
         res,
         statusCode.CREATED,
         "Products fetched successfully",
-        products
+        products,
       );
     } catch (error) {
       return next(error);
@@ -54,7 +54,7 @@ class ProductControler {
   static async getPublic(
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
   ): Promise<Response | void> {
     try {
       const { query } = req;
@@ -64,7 +64,7 @@ class ProductControler {
         res,
         statusCode.OK,
         "Products fetched successfully",
-        products
+        products,
       );
     } catch (error) {
       return next(error);
@@ -74,7 +74,7 @@ class ProductControler {
   static async getOne(
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
   ): Promise<Response | void> {
     try {
       const {
@@ -86,7 +86,7 @@ class ProductControler {
         res,
         statusCode.OK,
         "Product fetched successfully",
-        product
+        product,
       );
     } catch (error) {
       return next(error);
@@ -96,7 +96,7 @@ class ProductControler {
   static async updateOne(
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
   ): Promise<Response | void> {
     try {
       const {
@@ -113,7 +113,7 @@ class ProductControler {
           res,
           statusCode.NOT_FOUND,
           "Product not found",
-          null
+          null,
         );
 
       const product = await ProductServices.updateProduct(id, user._id, body);
@@ -122,7 +122,7 @@ class ProductControler {
         res,
         statusCode.CREATED,
         "Product created successfully",
-        product
+        product,
       );
     } catch (error) {
       return next(error);
@@ -132,7 +132,7 @@ class ProductControler {
   static async deleteOne(
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
   ): Promise<Response | void> {
     try {
       const {
@@ -148,7 +148,7 @@ class ProductControler {
           res,
           statusCode.NOT_FOUND,
           "Product not found",
-          null
+          null,
         );
 
       await ProductServices.deleteOne(id);
@@ -156,7 +156,7 @@ class ProductControler {
         res,
         statusCode.OK,
         "prodcut deleted successfully",
-        null
+        null,
       );
     } catch (error) {
       return next(error);
