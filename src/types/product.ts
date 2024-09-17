@@ -4,6 +4,7 @@ export interface ProductType {
   description?: string;
   price: number;
   category?: string;
+  userId?: string;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -11,9 +12,11 @@ export interface ProductType {
 export interface ProductQuery {
   _id?: string;
   name?: string;
-  price?: { $gte?: number; $lte?: number };
+  minPrice?: number;
+  maxPrice?: number;
   category?: string;
-  user?: any;
+  currency?: string;
+  userId?: any;
   page?: number;
   size?: number;
   from?: Date;

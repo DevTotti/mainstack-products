@@ -13,7 +13,7 @@ const app: Application = express();
 app.use(express.json());
 
 // Routes
-app.use("/products", productRouter);
+app.use("/product", productRouter);
 app.use("/auth", userRouter);
 
 // Error handling for undefined routes
