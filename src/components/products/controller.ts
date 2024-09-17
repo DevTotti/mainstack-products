@@ -7,13 +7,9 @@ import { ProductQuery } from "../../types/product";
 // Instantiate ProductService to use in the controller methods
 const ProductServices = new ProductService();
 
-class ProductControler {
+class ProductController {
   /**
    * Create a new product.
-   * @param req - The request object, containing the product details and user info.
-   * @param res - The response object, used to send the response.
-   * @param next - The next function to call in case of an error.
-   * @returns A response with the created product or an error.
    */
   static async create(
     req: Request,
@@ -40,10 +36,6 @@ class ProductControler {
 
   /**
    * Fetch all products for the authenticated user.
-   * @param req - The request object, containing user info and query parameters.
-   * @param res - The response object, used to send the response.
-   * @param next - The next function to call in case of an error.
-   * @returns A response with the list of products or an error.
    */
   static async get(
     req: Request,
@@ -73,10 +65,6 @@ class ProductControler {
 
   /**
    * Fetch all public products (no authentication required).
-   * @param req - The request object, containing query parameters.
-   * @param res - The response object, used to send the response.
-   * @param next - The next function to call in case of an error.
-   * @returns A response with the list of public products or an error.
    */
   static async getPublic(
     req: Request,
@@ -102,10 +90,6 @@ class ProductControler {
 
   /**
    * Fetch a single public product by ID (no authentication required).
-   * @param req - The request object, containing the product ID as a route parameter.
-   * @param res - The response object, used to send the response.
-   * @param next - The next function to call in case of an error.
-   * @returns A response with the product or an error.
    */
   static async getOnePublic(
     req: Request,
@@ -133,10 +117,6 @@ class ProductControler {
 
   /**
    * Fetch a single product for the authenticated user by ID.
-   * @param req - The request object, containing the product ID as a route parameter and user info.
-   * @param res - The response object, used to send the response.
-   * @param next - The next function to call in case of an error.
-   * @returns A response with the product or an error.
    */
   static async getOne(
     req: Request,
@@ -174,10 +154,6 @@ class ProductControler {
 
   /**
    * Update a single product for the authenticated user by ID.
-   * @param req - The request object, containing the product ID as a route parameter, updated product details, and user info.
-   * @param res - The response object, used to send the response.
-   * @param next - The next function to call in case of an error.
-   * @returns A response with the updated product or an error.
    */
   static async updateOne(
     req: Request,
@@ -220,10 +196,6 @@ class ProductControler {
 
   /**
    * Delete a single product for the authenticated user by ID.
-   * @param req - The request object, containing the product ID as a route parameter and user info.
-   * @param res - The response object, used to send the response.
-   * @param next - The next function to call in case of an error.
-   * @returns A response indicating success or an error.
    */
   static async deleteOne(
     req: Request,
@@ -264,4 +236,4 @@ class ProductControler {
   }
 }
 
-export default ProductControler;
+export default ProductController;
