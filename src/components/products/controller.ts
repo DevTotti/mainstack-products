@@ -128,7 +128,7 @@ class ProductController {
         params: { id },
         user,
       } = req;
-      console.log("userId: ", user)
+      console.log("userId: ", user);
       const product = await ProductServices.getProductBycustom({
         _id: id,
         userId: user?.id,

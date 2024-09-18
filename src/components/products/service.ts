@@ -10,7 +10,9 @@ class ProductService {
 
   // Updates an existing product based on the provided id and user, and returns the updated product
   async updateProduct(id: string, user: number, data: ProductType) {
-    return await Product.findOneAndUpdate({ _id: id, user }, data, { new: true });
+    return await Product.findOneAndUpdate({ _id: id, user }, data, {
+      new: true,
+    });
   }
 
   // Retrieves a list of products based on the query parameters and pagination settings
@@ -29,7 +31,7 @@ class ProductService {
     } = queryParams;
 
     const query: any = {};
-    
+
     // Build the query object based on provided filters
     if (userId) query.userId = userId;
     if (category) query.category = category;
@@ -48,7 +50,7 @@ class ProductService {
     if (from && !to) {
       query.createdAt = { $gte: new Date(from), $lte: new Date() };
     }
-    
+
     // Log the query for debugging purposes
     console.log("ProductQuery: ", query);
 

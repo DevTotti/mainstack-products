@@ -8,7 +8,7 @@ export async function fetchPage(
     trx = null, // Optional session for transaction support
     select, // Optional fields to include in the results
     exclude, // Optional fields to exclude from the results
-  }: IPaginationPayload // Destructured pagination payload
+  }: IPaginationPayload, // Destructured pagination payload
 ): Promise<IPaginationResponse> {
   // Destructure pagination settings
   const { count: perPage, page: currentPage } = pagination;

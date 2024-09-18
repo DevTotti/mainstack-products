@@ -87,5 +87,4 @@ This will start the application and MongoDB as containers. The application will 
     ```
 
 Postman Documentation
-[Postman Documentation](URL)
-
+[Postman Documentation](https://www.postman.com/blue-water-623532/workspace/mainstack-product/collection/8510289-1e226a25-efbd-4ec2-bfe9-b55fe7131016?action=share&source=copy-link&creator=8510289&active-environment=8058fdcd-f3d2-45a1-8c2a-cef275c90b34)
