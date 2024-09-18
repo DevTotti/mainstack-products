@@ -45,7 +45,9 @@ class UserControler {
     next: NextFunction,
   ): Promise<Response | void> {
     try {
-      const { body: { username, password } } = req;
+      const {
+        body: { username, password },
+      } = req;
 
       // Find the user by username
       const user = await UserServices.findUser(username);
@@ -55,7 +57,10 @@ class UserControler {
           .json({ message: "Invalid username or password" });
 
       // Compare provided password with stored password
-      const isMatch = await UserServices.comparePassword(password, user.password);
+      const isMatch = await UserServices.comparePassword(
+        password,
+        user.password,
+      );
       if (!isMatch)
         return ExpressResponse.error(
           res,
