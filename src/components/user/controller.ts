@@ -67,7 +67,7 @@ class UserControler {
       const token = await UserServices.signPassword(user._id, user.username);
       return ExpressResponse.success(
         res,
-        statusCode.CREATED,
+        statusCode.OK,
         "User logged in successfully",
         token,
       );

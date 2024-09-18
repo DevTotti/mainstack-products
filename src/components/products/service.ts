@@ -5,8 +5,7 @@ import { fetchPage } from "../../utils/fetch-page";
 class ProductService {
   // Creates a new product and returns it without the userId and __v fields
   async createProduct(data: ProductType) {
-    const product = await Product.create(data);
-    return await Product.findById(product._id).select("-userId -__v");
+    return await Product.create(data);
   }
 
   // Updates an existing product based on the provided id and user, and returns the updated product

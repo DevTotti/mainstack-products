@@ -53,7 +53,7 @@ class ProductController {
       // Respond with success status and the list of products
       return ExpressResponse.success(
         res,
-        statusCode.CREATED,
+        statusCode.OK,
         "Products fetched successfully",
         products,
       );
@@ -128,6 +128,7 @@ class ProductController {
         params: { id },
         user,
       } = req;
+      console.log("userId: ", user)
       const product = await ProductServices.getProductBycustom({
         _id: id,
         userId: user?.id,
@@ -185,7 +186,7 @@ class ProductController {
       return ExpressResponse.success(
         res,
         statusCode.CREATED,
-        "Product created successfully",
+        "Product updated successfully",
         product,
       );
     } catch (error) {
