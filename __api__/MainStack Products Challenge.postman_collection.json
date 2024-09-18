@@ -320,13 +320,17 @@
 			},
 			"request": {
 				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZTljMGY3NDBhMWMzNzlkM2UyOWM3NyIsInVzZXJuYW1lIjoiZGV2dG90dGkiLCJpYXQiOjE3MjY2MDExNTYsImV4cCI6MTcyNjYwNDc1Nn0.sdhCKY2UkSMprIU3b2Fbk__cw0YEH-51z1p3T9rRazY",
-						"type": "text"
-					}
-				],
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"header": [],
 				"body": {
 					"mode": "raw",
 					"raw": "",
