@@ -7,29 +7,33 @@ Mainstack Products API is a Node.js RESTful API built with TypeScript and MongoD
 ## **Project Structure**
 
 The project is organized as follows:
+```bash
 mainstack-products/
 ├── src/
 │   ├── components/
 │   │   └── products/
-│   │       ├── controller.ts   # Handles HTTP requests
-│   │       ├── service.ts      # Business logic for products
-│   │       ├── route.ts        # Product API routes
+│   │       ├── controller.ts         # Handles HTTP requests
+│   │       ├── service.ts            # Business logic for products
+│   │       ├── route.ts              # Product API routes
 │   ├── models/
-│   │   └── Product.ts          # Mongoose Product model
+│   │   └── Product.ts                # Mongoose Product model
 │   ├── middleware/
-│   │   └── auth.ts             # Authentication middleware
+│   │   └── auth.ts                   # Authentication middleware
 │   ├── utils/
-│   │   └── fetchpage.ts        # Utility functions
+│   │   └── fetchpage.ts              # Utility functions
+├── __api__/
+│   └── MainStack Products Challenge.postman_collection.json # Postman API collection
 ├── test/
-│   ├── unit/                   # Unit tests
-│      └── product.test.ts      # Product service unit tests
-│      └── user.test.ts         # User service unit tests
-├── Dockerfile                   # Docker configuration
-├── docker-compose.yml           # Docker compose for multi-container setup
-├── jest.config.js               # Jest configuration for testing
-├── package.json                 # Project dependencies and scripts
-└── tsconfig.json                # TypeScript configuration
+│   ├── unit/                         # Unit tests
+│   │   ├── product.test.ts           # Product service unit tests
+│   │   └── user.test.ts              # User service unit tests
+├── Dockerfile                        # Docker configuration
+├── docker-compose.yml                # Docker Compose for multi-container setup
+├── jest.config.js                    # Jest configuration for testing
+├── package.json                      # Project dependencies and scripts
+└── tsconfig.json                     # TypeScript configuration
 
+```
 
 ## **Features**
 - **Authentication**: Secure routes using middleware for authentication.
