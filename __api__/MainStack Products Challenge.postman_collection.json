@@ -1,0 +1,477 @@
+{
+	"info": {
+		"_postman_id": "1e226a25-efbd-4ec2-bfe9-b55fe7131016",
+		"name": "MainStack Products Challenge",
+		"description": "Github Repository - [https://github.com/DevTotti/mainstack-products](https://github.com/DevTotti/mainstack-products)  \nLive API - [https://domestic-zulema-neptunetechy-cb7ddb4e.koyeb.app](https://domestic-zulema-neptunetechy-cb7ddb4e.koyeb.app)  \n  \nPlease set the `base-ur`l as environment variable and set its currenct value to the Live API above  \n  \nPostman does not support adding secret on a public workspace/collection so I had to remove it  \n  \nAlso, create a variable called `token` in the environment, the value would be automatically set when you send the `auth/login` request  \n  \nThank you!",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8510289",
+		"_collection_link": "https://www.postman.com/blue-water-623532/workspace/mainstack-product/collection/8510289-1e226a25-efbd-4ec2-bfe9-b55fe7131016?action=share&source=collection_link&creator=8510289"
+	},
+	"item": [
+		{
+			"name": "Register User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"string\",\n    \"password\": \"string\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/auth/register",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Parse the JSON response",
+							"const jsonData = pm.response.json();",
+							"",
+							"// Check if the login was successful",
+							"if (jsonData.success) {",
+							"    // Store the token in the environment variable",
+							"    pm.environment.set(\"token\", jsonData.data);",
+							"    console.log(\"Token saved to environment\");",
+							"} else {",
+							"    console.log(\"Login failed: \", jsonData.message);",
+							"}",
+							"",
+							"pm.test(\"Response status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Content-Type header is application/json\", function () {",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response has the required fields - success, message, and data\", function () {",
+							"    const responseData = pm.response.json();",
+							"",
+							"    pm.expect(responseData).to.be.an('object');",
+							"    pm.expect(responseData).to.have.property('success');",
+							"    pm.expect(responseData).to.have.property('message');",
+							"    pm.expect(responseData).to.have.property('data');",
+							"});",
+							"",
+							"",
+							"pm.test(\"Data is a non-empty string\", function () {",
+							"  const responseData = pm.response.json();",
+							"  ",
+							"  pm.expect(responseData.data).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Data should not be empty\");",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"string\",\n    \"password\": \"string\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/auth/login",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Hisense 55' Smart TV\",\n    \"description\": \"hisense TV\",\n    \"price\": 600000,\n    \"currency\": \"NGN\",\n    \"category\": \"good\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/product",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products - self",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/product",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"product"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "2024-09-10",
+							"disabled": true
+						},
+						{
+							"key": "to",
+							"value": "2024-09-18",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "Book",
+							"disabled": true
+						},
+						{
+							"key": "category",
+							"value": "good",
+							"disabled": true
+						},
+						{
+							"key": "currency",
+							"value": "NGN",
+							"disabled": true
+						},
+						{
+							"key": "minPrice",
+							"value": "500",
+							"disabled": true
+						},
+						{
+							"key": "maxPrice",
+							"value": "1000",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products Public",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base-url}}/product/public",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"product",
+						"public"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "2024-09-10",
+							"disabled": true
+						},
+						{
+							"key": "to",
+							"value": "2024-09-18",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "Book",
+							"disabled": true
+						},
+						{
+							"key": "category",
+							"value": "good",
+							"disabled": true
+						},
+						{
+							"key": "currency",
+							"value": "NGN",
+							"disabled": true
+						},
+						{
+							"key": "minPrice",
+							"value": "500",
+							"disabled": true
+						},
+						{
+							"key": "maxPrice",
+							"value": "1000",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get One Public",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base-url}}/product/public/66eb192cb1d410e4517d7302",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"product",
+						"public",
+						"66eb192cb1d410e4517d7302"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get One - Self",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZTljMGY3NDBhMWMzNzlkM2UyOWM3NyIsInVzZXJuYW1lIjoiZGV2dG90dGkiLCJpYXQiOjE3MjY2MDExNTYsImV4cCI6MTcyNjYwNDc1Nn0.sdhCKY2UkSMprIU3b2Fbk__cw0YEH-51z1p3T9rRazY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/product/66e9d288ea8b04defee6b528",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"product",
+						"66e9d288ea8b04defee6b528"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "2024-09-10",
+							"disabled": true
+						},
+						{
+							"key": "to",
+							"value": "2024-09-18",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "Book",
+							"disabled": true
+						},
+						{
+							"key": "category",
+							"value": "good",
+							"disabled": true
+						},
+						{
+							"key": "currency",
+							"value": "NGN",
+							"disabled": true
+						},
+						{
+							"key": "minPrice",
+							"value": "500",
+							"disabled": true
+						},
+						{
+							"key": "maxPrice",
+							"value": "1000",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update One",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Hisense 65' Smart TV\",\n    \"price\": 6500900\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/product/66eb1d99b1d410e4517d731c",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"product",
+						"66eb1d99b1d410e4517d731c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete One",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base-url}}/product/66eb1d99b1d410e4517d731c",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"product",
+						"66eb1d99b1d410e4517d731c"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
