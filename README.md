@@ -27,6 +27,7 @@ mainstack-products/
 │   ├── unit/                         # Unit tests
 │   │   ├── product.test.ts           # Product service unit tests
 │   │   └── user.test.ts              # User service unit tests
+│   └──  setup.ts                     # Test setup
 ├── Dockerfile                        # Docker configuration
 ├── docker-compose.yml                # Docker Compose for multi-container setup
 ├── jest.config.js                    # Jest configuration for testing
